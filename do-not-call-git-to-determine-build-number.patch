@@ -1,0 +1,25 @@
+From d6e6660e3727bb9a7876a2e88e605018571097cc Mon Sep 17 00:00:00 2001
+From: Pavel Nakonechnyi <pavel@gremwell.com>
+Date: Sun, 7 Jul 2019 14:31:12 +0200
+Subject: [PATCH 2/2] do not call 'git' to determine build number
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 0f9ed07..c16509f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -38,7 +38,7 @@ bin: $(MKIMG)
+ 
+ src/build_info.h:
+ 	@echo -n '#define MKIMAGE_COMMIT 0x' > src/build_info.h
+-	@git rev-parse --short=8 HEAD >> src/build_info.h
++	@echo -n 'deadbeef' >> src/build_info.h
+ 	@echo '' >> src/build_info.h
+ 
+ help:
+-- 
+2.21.0
+
