@@ -1,12 +1,12 @@
 Name: pico-imx8mq-bootimage
 Version: 4.14.98
-Release: alt1
+Release: alt2
 
 Summary: Combined boot image for TechNexion PICO IMX8MQ board
 License: GPL
 Group: System/Kernel and hardware
 
-ExclusiveArch: aarch64
+BuildArch: noarch
 
 Source: %name-%version-%release.tar
 
@@ -52,5 +52,8 @@ install -pm0644 -D %platform/flash.bin %buildroot%_datadir/pico-imx8mq-bootimage
 %_datadir/pico-imx8mq-bootimage
 
 %changelog
+* Wed Jul 17 2019 Pavel Nakonechnyi <zorg@altlinux.org> 4.14.98-alt2
+- make target package noarch
+
 * Sun Jul 07 2019 Pavel Nakonechnyi <zorg@altlinux.org> 4.14.98-alt1
 - initial build of bootimage for TechNexion PICO IMX8MQ board
