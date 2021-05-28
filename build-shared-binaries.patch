@@ -1,0 +1,67 @@
+From c992dab46807ab6aac83aa3b834091e443a9baab Mon Sep 17 00:00:00 2001
+From: Pavel Nakonechnyi <pavel@gremwell.com>
+Date: Sun, 7 Jul 2019 14:30:45 +0200
+Subject: [PATCH 1/2] build shared binaries
+
+---
+ Makefile       | 2 +-
+ iMX8M/soc.mak  | 2 +-
+ iMX8QX/soc.mak | 2 +-
+ iMX8dv/soc.mak | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 49ef486..0f9ed07 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ 
+ MKIMG = $(PWD)/mkimage_imx8
+ CC = gcc
+-CFLAGS ?= -g -O2 -Wall -std=c99 -static
++CFLAGS ?= -g -O2 -Wall -std=c99
+ INCLUDE += $(CURR_DIR)/src
+ 
+ SRCS = src/imx8qm.c  src/imx8qx.c src/imx8qxb0.c src/mkimage_imx8.c
+diff --git a/iMX8M/soc.mak b/iMX8M/soc.mak
+index bc6acc1..21cc2e3 100644
+--- a/iMX8M/soc.mak
++++ b/iMX8M/soc.mak
+@@ -2,7 +2,7 @@ MKIMG = mkimage_imx8
+ OUTIMG = flash.bin
+ 
+ CC ?= gcc
+-CFLAGS ?= -O2 -Wall -std=c99 -static
++CFLAGS ?= -O2 -Wall -std=c99
+ INCLUDE = ./lib
+ 
+ WGET = /usr/bin/wget
+diff --git a/iMX8QX/soc.mak b/iMX8QX/soc.mak
+index 3c8e7b1..aec6ca9 100755
+--- a/iMX8QX/soc.mak
++++ b/iMX8QX/soc.mak
+@@ -2,7 +2,7 @@ MKIMG = ../mkimage_imx8
+ 
+ CC ?= gcc
+ REV ?= B0
+-CFLAGS ?= -O2 -Wall -std=c99 -static
++CFLAGS ?= -O2 -Wall -std=c99
+ INCLUDE = ./lib
+ 
+ #define the F(Q)SPI header file
+diff --git a/iMX8dv/soc.mak b/iMX8dv/soc.mak
+index 97fd8da..fafa275 100644
+--- a/iMX8dv/soc.mak
++++ b/iMX8dv/soc.mak
+@@ -1,7 +1,7 @@
+ MKIMG = mkimage_imx8
+ 
+ CC ?= gcc
+-CFLAGS ?= -O2 -Wall -std=c99 -static
++CFLAGS ?= -O2 -Wall -std=c99
+ 
+ $(MKIMG): mkimage_imx8.c imx8dv_dcd.cfg
+ 	$(CC) -E -Wp,-MD,.imx8dv_dcd.cfg.cfgtmp.d  -nostdinc -Iinclude -x c -o imx8dv_dcd.cfg.tmp imx8dv_dcd.cfg
+-- 
+2.21.0
+
